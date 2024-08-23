@@ -1,7 +1,7 @@
 # Garbage Detection and Classification
 
 <p align="center">
-  <img src="https://github.com/kyang4881/KYGit/blob/master/Computer%20Vision/Garbage%20Classification/docs/images/background.png" width="1200" />
+  <img src="https://github.com/kyang4881/Garbage-Detection-and-Classification/blob/main/docs/images/background.png" width="1200" />
 </p>
 
 ---
@@ -32,7 +32,7 @@ Thirty-one different background images containing no garbage were sourced from g
 
 
 <p align="center">
-  <img src="https://github.com/kyang4881/KYGit/blob/master/Computer%20Vision/Garbage%20Classification/docs/images/data_overlay.png" width="1200" />
+  <img src="https://github.com/kyang4881/Garbage-Detection-and-Classification/blob/main/docs/images/data_overlay.png" width="1200" />
 </p>
 
 The resulting dataset consisted of 39,965 files and 67.6 GB of memory, too large of a dataset to be used unaltered without taking a significant amount of time for model training. The images were resized to 224 by 224 pixels from their original 1120 by 1120 pixels, accepting a trade-off in possible performance gains from the increased image resolution for training speed. 
@@ -46,7 +46,7 @@ The project aimed to overcome two main tasks: Image classification and object de
 The models were trained and tested with the generated images, with the results documented in the attached appendix (figures 8 to 11). To validate the models, a curated set of non-generated images consisting of garbage found in organic environments (such as one shown in figure 2 below) were used.
 
 <p align="center">
-  <img src="https://github.com/kyang4881/KYGit/blob/master/Computer%20Vision/Garbage%20Classification/docs/images/train_val_test.png" width="1200" />
+  <img src="https://github.com/kyang4881/Garbage-Detection-and-Classification/blob/main/docs/images/train_val_test.png" width="1200" />
 </p>
 
 
@@ -61,7 +61,7 @@ Transfer learning using models Resnet 50, EfficientNetV2L and Vision Transformer
 Developed by He et al (2015), Resnet50 is a computer vision model on a 50-layer convolutional neural network architecture (CNN). Utilization of residual learning (figure 2) allows the convolution network to overcome commonly encountered degradation associated with vanishing and exploding gradients. The pre-trained model was trained on images available on ImageNet.
 
 <p align="center">
-  <img src="https://github.com/kyang4881/KYGit/blob/master/Computer%20Vision/Garbage%20Classification/docs/images/resnet.png" width="1200" />
+  <img src="https://github.com/kyang4881/Garbage-Detection-and-Classification/blob/main/docs/images/resnet.png" width="1200" />
 </p>
 
 ### EfficientNetV2L
@@ -69,7 +69,7 @@ Developed by He et al (2015), Resnet50 is a computer vision model on a 50-layer 
 EfficientNetV2L (Tan & Le, 2021) is built upon two main concepts, compound coefficient model scaling and neural architecture search (NAS). Often, the continual addition of neural network layers do not necessarily result in a performance improvement of a CNN. By having a set of scaling coefficients, EfficientNet architecture allows for neural networks to be developed with a uniform set of neural network widths, depth and resolution (figure 3). NAS allows for a systematic approach to model tuning via defining search space, search strategy and set performance metrics to further develop a model with good performance. 
 
 <p align="center">
-  <img src="https://github.com/kyang4881/KYGit/blob/master/Computer%20Vision/Garbage%20Classification/docs/images/effnet.png" width="1200" />
+  <img src="https://github.com/kyang4881/Garbage-Detection-and-Classification/blob/main/docs/images/effnet.png" width="1200" />
 </p>
 
 
@@ -78,7 +78,7 @@ EfficientNetV2L (Tan & Le, 2021) is built upon two main concepts, compound coeff
 Vision Transformer (henceforth referred to as ViT) was developed by Dosovitskiy et al (2020). Trained on Google’s JFT-300M image dataset, ViT architecture (figure 4) differs vastly from CNN architecture. Transformers, often used in natural language processing (NLP), focus on creating encodings for each set of data (such as a sentence, document or image) by forming associations between a token (or image pixel) and all other tokens. To apply a similar NLP approach to an image without alteration will be impractical, as the time complexity of such an operation would be O(n2), impractically large for images often thousands of pixels in width and height. Instead, ViT segments each image into multiple patches (sub-images 16 by 16 pixels in size), creates embeddings for each patch before creating a global association through a transformer encoder. Multi-layer perceptrons (MLP) consolidate the learned weights to form the classification layer of the neural network.
 
 <p align="center">
-  <img src="https://github.com/kyang4881/KYGit/blob/master/Computer%20Vision/Garbage%20Classification/docs/images/vit.png" width="1200" />
+  <img src="https://github.com/kyang4881/Garbage-Detection-and-Classification/blob/main/docs/images/vit.png" width="1200" />
 </p>
 
 ---
@@ -92,7 +92,7 @@ Transfer learning using model YOLOV3 was selected for the task of object identif
 YOLOV3 (Redmon et al, 2016) tackles object identification in a method not unlike ViTs, by splitting a image into a series of sub-images in a grid like fashion. Conventionally, the sliding window object detection method is used for the task of object detection, which uses an approach similar to kernels in CNNs, the model learning from a window moved across the image with the image data and bounding box data. What makes YOLO unique in its approach to object detection is to first split an image into a grid and embedding visual and bounding box data within each cell of the grid. Feeding each sub-image through a CNN, the assessment of the location and appropriate label of the object of interest is assessed as a whole image. A trained model would then be able to predict several viable bounding boxes, with nonmax suppression, a method used to assess probabilities of the bounding boxes, used to determine the most appropriate bounding box for that image.
 
 <p align="center">
-  <img src="https://github.com/kyang4881/KYGit/blob/master/Computer%20Vision/Garbage%20Classification/docs/images/yolo.png" width="1200" />
+  <img src="https://github.com/kyang4881/Garbage-Detection-and-Classification/blob/main/docs/images/yolo.png" width="1200" />
 </p>
 
 ---
@@ -120,11 +120,11 @@ Evaluation of the previously mentioned models was be done primarily through the 
 For image classification, it appears that performance of the model improves with the more recent, sophisticated models. For YOLOV3, while the accuracy, precision and recall performance metrics are not as high as the test classification models, the IOU was found to be 57%, a relatively acceptable level for a model not yet trained specially on the selected dataset.
     
  <p align="center">
-  <img src="https://github.com/kyang4881/KYGit/blob/master/Computer%20Vision/Garbage%20Classification/docs/images/results.png" width="1200" />
+  <img src="https://github.com/kyang4881/Garbage-Detection-and-Classification/blob/main/docs/images/results.png" width="1200" />
 </p>   
 
  <p align="center">
-  <img src="https://github.com/kyang4881/KYGit/blob/master/Computer%20Vision/Garbage%20Classification/docs/images/pred.png" width="1200" />
+  <img src="https://github.com/kyang4881/Garbage-Detection-and-Classification/blob/main/docs/images/pred.png" width="1200" />
 </p>   
 
 ---
@@ -724,7 +724,7 @@ run2.visualize_results(preds)
 Visualize performance
 
 <p align="center">
-  <img src="https://github.com/kyang4881/KYGit/blob/master/Computer%20Vision/Garbage%20Classification/docs/images/pred_results.png" width="1200" />
+  <img src="https://github.com/kyang4881/Garbage-Detection-and-Classification/blob/main/docs/images/pred_results.png" width="1200" />
 </p>
 
 ---
